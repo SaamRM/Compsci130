@@ -71,7 +71,11 @@ def ordered_keys(data, ordering, ascending):
     return sorted_list
     
  (import string)
+
  def generate_frequency_table(filename):
+    """
+    Generates dictionary that has the frequency of each letter from a file
+    """
     file = open(filename, 'r')
     original_text = file.read()
     letters = set(string.ascii_lowercase)
@@ -87,3 +91,43 @@ def ordered_keys(data, ordering, ascending):
             dictionary[item] += 1
             
     return dictionary
+
+def word_frequencies(sentence):
+    """
+    Letter frequncys from string and prints freq then letter
+    """
+    my_dict = {}
+    my_dict2 = {}
+    sentence = sentence.lower()
+    word_list = sentence.split()
+    
+    for word in word_list:
+        if word not in my_dict:
+            my_dict[word] = 1
+        else:
+            my_dict[word] += 1
+            
+    for key in my_dict:
+        value = my_dict[key]
+        if value not in my_dict2:
+            my_dict2[value] = [key]
+        else:
+            my_dict2[value].append(key)
+            
+    key_list = []
+    for key in my_dict2: 
+        key_list.append(key)
+    
+    for key in sorted(key_list, reverse = True):
+        line = str(key) + ' ' + str(sorted(my_dict2[key]))
+        print(line)
+        
+word_frequencies('a a a a a b b b b c c c d d e')
+
+Class CLASSNAME():
+    def __init__(self):
+        pass
+    def methodname(self):
+        pass
+    def __str__(self):
+        pass
